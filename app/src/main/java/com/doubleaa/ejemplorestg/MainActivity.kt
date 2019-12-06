@@ -16,14 +16,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 class MainActivity : AppCompatActivity() {
 
 
-    val retrofit = Retrofit.Builder().addCallAdapterFactory(
-        RxJava2CallAdapterFactory.create())
-        .addConverterFactory(
-            GsonConverterFactory.create())
-        .baseUrl("http://192.168.1.76:8084/dummy/webresources/")
-        .build();
-
-    var retrofitobj = retrofit.create(IHostApiService::class.java)
 
 
 
@@ -78,6 +70,14 @@ class MainActivity : AppCompatActivity() {
 
     fun guardarTaco(){
         //INICIA POST
+        val retrofit = Retrofit.Builder().addCallAdapterFactory(
+        RxJava2CallAdapterFactory.create())
+        .addConverterFactory(
+            GsonConverterFactory.create())
+        .baseUrl("http://192.168.1.76:8084/dummy/webresources/")
+        .build();
+
+        var retrofitobj = retrofit.create(IHostApiService::class.java)
         var newTaco = TacoBodyPojo()
         newTaco.nombre ="aldairmh4"
         newTaco.precio = "100"
